@@ -6,17 +6,26 @@ def querygenerator(pathfilecsv):
     #pathfilecsv = '/home/chelo/Downloads/datos_genes-Hoja1.csv'
     parser = AminocidParser()
 
-    variantes = list(csv.reader(open(pathfilecsv)))   #read in the csv file
-    csv_dic = {}
-    genes = variantes[0]
-    index = 0
+    
     querys = []
 
-    while index < len(genes) and index < len(variantes):
-        csv_dic[genes[index]] = variantes[index + 1]
-        index = index + 1
-   
+    entrada = list(csv.reader(open(pathfilecsv)))   #read in the csv file
+    variantes = entrada[1:]
+    csv_dic = {}
+    genes = entrada[0]
+    index = 0
     
+
+
+    while index < len(genes): 
+
+        variantesporgen = []
+        for listas in variantes: 
+            #print(listas[index])
+            variantesporgen.append(listas[index])
+        print(variantesporgen)
+        csv_dic[genes[index]] = variantesporgen
+        index = index + 1
     
     for key,value in csv_dic.items():
         for index,valu in enumerate(value):
@@ -29,4 +38,4 @@ def querygenerator(pathfilecsv):
 
 
 if __name__ == '__main__':
-    querygenerator('/home/chelo/Downloads/datos_genes-Hoja1.csv') 
+    querygenerator('/home/chelo/Downloads/datos_genes-Hoja2.csv') 

@@ -24,6 +24,6 @@ for iquery in querys:
         for i in Authors:
             au = i["firstname"]
         df = df.append({'doi':doi, 'Abs': abs}, ignore_index=True)
-df.to_csv('ncbi_pru1.csv')
+#df.to_csv('ncbi_pru1.csv')
 print(df)
 
