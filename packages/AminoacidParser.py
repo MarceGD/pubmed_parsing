@@ -75,6 +75,6 @@ class AminocidParser:
     change1 = parseador.one_to_three_name(am1)
     change2 =  parseador.one_to_three_name(am2)
     varf = change1+var[1:-1]+change2
-    query = gen+'[Title/Abstract] AND ('+ var + '[Title/Abstract] OR ' + varf + '[Title/Abstract])'
+    query = gen +'[Title/Abstract] AND ('+ var + '[Title/Abstract] OR ' + varf + '[Title/Abstract])'
     return query
 

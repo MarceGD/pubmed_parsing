@@ -4,8 +4,7 @@ from packages.AminoacidParser import *
 
 
 def querygenerator(pathfilecsv):
-
-   # pathfilecsv = '/home/chelo/Downloads/datos_genes-Hoja2.csv'
+    pathfilecsv = '/home/chelo/proyectos/varmed-bench/pubmed_parser/datos_genes-Hoja2.csv'
     parser = AminocidParser()
 
     
@@ -43,6 +42,7 @@ def querygenerator(pathfilecsv):
             print(key,value[index])
             querys.append(parser.ncbi_query_bilder(key,value[index]))
     print(querys)
+    return querys
     for i,q in enumerate(querys):
         print(i,q)
     

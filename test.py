@@ -10,10 +10,13 @@ df = pd.DataFrame(columns=['doi','Abs'] )
 pubmed = PubMed(tool="MyTool", email="my@email.address")
 querys = querygenerator('datos_genes-Hoja1.csv')
 #query = "PTPN11[Title/Abstract] AND (D61G[Title/Abstract] OR Asp61Gly[Title/Abstract])"
+
 for iquery in querys:
+    print(iquery)
 # Execute the query against the API
     
     results = pubmed.query(iquery, max_results=500)
+    
     for article in results:
         a = article.toJSON()  
         ay = json.loads(a)
