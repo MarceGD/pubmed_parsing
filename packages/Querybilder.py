@@ -16,12 +16,17 @@ def querygenerator(pathfilecsv):
         csv_dic[genes[index]] = variantes[index + 1]
         index = index + 1
    
-    for gen in csv_dic.keys():
-        for index,value in enumerate(csv_dic.values()):
-            querys.append(parser.ncbi_query_bilder(gen,value[index]))
+    
+    
+    for key,value in csv_dic.items():
+        for index,valu in enumerate(value):
+            querys.append(parser.ncbi_query_bilder(key,value[index]))
+    
     print(querys)
     return querys
     
+    
+
 
 if __name__ == '__main__':
     querygenerator('/home/chelo/Downloads/datos_genes-Hoja1.csv') 
