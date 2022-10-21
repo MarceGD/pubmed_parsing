@@ -1,9 +1,11 @@
-from packages.AminoacidParser import *
 import csv
+
+from packages.AminoacidParser import *
+
 
 def querygenerator(pathfilecsv):
 
-    #pathfilecsv = '/home/chelo/Downloads/datos_genes-Hoja1.csv'
+   # pathfilecsv = '/home/chelo/Downloads/datos_genes-Hoja2.csv'
     parser = AminocidParser()
 
     
@@ -14,11 +16,13 @@ def querygenerator(pathfilecsv):
     csv_dic = {}
     genes = entrada[0]
     index = 0
+    print(genes)
     
-
-
+        
+    
     while index < len(genes): 
 
+    # listagenindex = []
         variantesporgen = []
         for listas in variantes: 
             #print(listas[index])
@@ -26,16 +30,23 @@ def querygenerator(pathfilecsv):
         print(variantesporgen)
         csv_dic[genes[index]] = variantesporgen
         index = index + 1
-    
+
+
     for key,value in csv_dic.items():
-        for index,valu in enumerate(value):
+    
+        print(key,value)
+        while("" in value) : 
+            value.remove("") 
+    for key,value in csv_dic.items():
+        for index,vr in enumerate(value):
+        
+            print(key,value[index])
             querys.append(parser.ncbi_query_bilder(key,value[index]))
-    
     print(querys)
-    return querys
-    
+    for i,q in enumerate(querys):
+        print(i,q)
     
 
 
 if __name__ == '__main__':
-    querygenerator('/home/chelo/Downloads/datos_genes-Hoja2.csv') 
+    querygenerator('/home/chelo/proyectos/varmed-bench/pubmed_parser/datos_genes-Hoja2.csv') 
