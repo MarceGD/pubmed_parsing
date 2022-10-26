@@ -6,13 +6,13 @@ import json
 import pandas as pd
 
 #df = pd.DataFrame(columns=['doi', 'title', 'Abs', 'Aut'] )
-df = pd.DataFrame(columns=['doi','Abs'] )
-pubmed = PubMed(tool="MyTool", email="my@email.address")
+df = pd.DataFrame(columns=['gen','var', 'Abs'] )
+pubmed = PubMed(tool="MyTool", email="mdgamarraok@gmail.com")
 querys = querygenerator('datos_genes-Hoja1.csv')
 #query = "PTPN11[Title/Abstract] AND (D61G[Title/Abstract] OR Asp61Gly[Title/Abstract])"
 
 for iquery in querys:
-    print(iquery)
+    #print(iquery)
 # Execute the query against the API
     
     results = pubmed.query(iquery, max_results=500)
@@ -26,7 +26,9 @@ for iquery in querys:
         Authors = ay["authors"]
         for i in Authors:
             au = i["firstname"]
-        df = df.append({'doi':doi, 'Abs': abs}, ignore_index=True)
+        gen = iquery.split('[Title/Abstract]')[0]
+        variante = iquery.split('[Title/Abstract]')[1].split('(')[1]
+        df = df.append({'gen':gen, 'var': variante, 'Abs': abs}, ignore_index=True)
 #df.to_csv('ncbi_pru1.csv')
 print(df)
 

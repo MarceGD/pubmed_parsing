@@ -1,4 +1,3 @@
-from email.utils import parseaddr
 
 
 class AminocidParser:
