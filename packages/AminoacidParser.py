@@ -73,6 +73,7 @@ class AminocidParser:
     am2 = var[-1]
     change1 = parseador.one_to_three_name(am1)
     change2 =  parseador.one_to_three_name(am2)
+    #si da un error de NONETYPE es porque en el csv de los datos hay un espacio demas
     varf = change1+var[1:-1]+change2
     query = gen +'[Title/Abstract] AND ('+ var + '[Title/Abstract] OR ' + varf + '[Title/Abstract])'
     return query
